@@ -1,5 +1,33 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+ext {
+
+    bintrayRepo = "darktool"
+    bintrayName = "com.darkmfj.darktool"
+//    darktool / com.darkmfj.darktool
+    publishedGroupId = 'com.darkmfj.darktool'
+    libraryName = 'darktool'
+    artifact = 'darktool'
+
+    libraryDescription = 'my android lib collections'
+
+    siteUrl = 'https://github.com/darkmfj/DarkTool-Android'
+    gitUrl = 'https://github.com/darkmfj/DarkTool-Android.git'
+
+    libraryVersion = '1.0'
+
+    developerId = 'darkmfj'
+    developerName = 'darkmfj'
+    developerEmail = 'darkmfj@gmail.com'
+
+    licenseName = 'MIT'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 28
 
@@ -32,4 +60,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+//Add these lines to publish library to bintray. This is the readymade scripts made by github user nuuneoi to make uploading to bintray easy.
+//Place it at the end of the file
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/install.gradle'
+    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/bintray.gradle'
 }
